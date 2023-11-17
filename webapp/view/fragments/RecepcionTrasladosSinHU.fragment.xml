@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="RecepcionTrasladosSinHU" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormRecepcionTrasladosSinHU" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1"
+				columnsM="1" emptySpanL="4">
+				<f:content>
+					<!--Almacen destino-->
+					<Label text="{i18n>input_entrega_label}" required="true"/>
+					<Input value="{appModel>/RecepcionTrasladosSinHU/Datos/Entrega}" valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_RecepcionTrasladosSinHU_Entrega" submit="onSubmit_entrega_RecepcionTrasladosSinHU"></Input>
+				</f:content>
+			</f:SimpleForm>
+			<!--Cabecera de Entrega elegida-->
+			<f:SimpleForm visible="{= ${appModel>/RecepcionTrasladosSinHU/Datos/Entrega} !== '' }" >
+				<f:content>
+					<Label text="Pto.Recep."></Label>
+					<Text text="{appModel>/RecepcionTrasladosSinHU/Datos/Vstel}"></Text>
+					<Label text="Fecha Entr."></Label>
+					<Text text="{path: 'appModel>/RecepcionTrasladosSinHU/Datos/Lfdat', formatter: '.formatter.formatDate' }"></Text>
+					<Label text="Ce.Sum."></Label>
+					<Text text="{appModel>/RecepcionTrasladosSinHU/Datos/Werks}"></Text>
+					<Label text="Entreg Sal."></Label>
+					<Text text="{appModel>/RecepcionTrasladosSinHU/Datos/Lifex}"></Text>
+				</f:content>
+			</f:SimpleForm>
+			<!--Lista de Posiciones de Entrega elegida-->
+			<Table items="{appModel>/RecepcionTrasladosSinHU/Datos/ListaPosiciones}" visible="{= ${appModel>/RecepcionTrasladosSinHU/Datos/Entrega} !== '' }" headerText="Posiciones">
+				<columns>
+					<Column>
+						<Text text="Pos"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Centro"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Almacen"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Material"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Denominacion"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Cant./UM"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Lote"/>
+					</Column>
+					<Column>
+						<Text text="Cant.Pick"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{appModel>Posnr}"/>
+							<Text text="{appModel>Werks}"/>
+							<Text text="{appModel>Lgort}"/>
+							<Text text="{appModel>Matnr}"/>
+							<Text text="{appModel>Arktx}"/>
+							<ObjectNumber number="{appModel>Lfimg}" unit="{appModel>Meins}"/>
+							<Text text="{appModel>Charg}"/>
+							<Input type="Number" placeholder="Ing. Cantidad" value="{appModel>Pikmg}" submit="onValidaciones_RecepcionTrasladosSinHU"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'RecepcionTrasladosSinHU')"/>
+				<ToolbarSpacer/>
+				<Button text="Grabar" type="Emphasized" press="onAccionPrincipal_RecepcionTrasladosSinHU"
+					enabled="{appModel>/RecepcionTrasladosSinHU/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

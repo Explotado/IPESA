@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="ConsultaStock" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormConsultaStock" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4">
+				<f:content>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}" required="true"/>
+					<Input
+						value="{appModel>/ConsultaStock/Datos/Centro}"
+						valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_ConsultaStock_Centro"></Input>
+
+					<!--Material-->
+					<Label text="{i18n>input_material_label}" required="true"/>
+					<Input
+						value="{appModel>/ConsultaStock/Datos/Material}"
+						valueHelpOnly="false" change="onSubmit_Material_ConsultaStock" submit="onSubmit_Material_ConsultaStock" showValueHelp="true" valueHelpRequest="onValueHelp_ConsultaStock_Material"></Input>
+					<!--Almacen destino-->
+					<Label text="{i18n>input_almacen_label}" required="false"/>
+					<Input
+						value="{appModel>/ConsultaStock/Datos/Almacen}"
+						valueHelpOnly="false" change="onSubmit_Almacen_ConsultaStock" submit="onSubmit_Almacen_ConsultaStock" showValueHelp="true" valueHelpRequest="onValueHelp_ConsultaStock_Almacen"></Input>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm id="idFormConsultaStock2" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4" visible="{appModel>/ConsultaStock/Validado}">
+				<f:content>
+					<!--<Label text="{i18n>input_centro_label}"/>-->
+					<!--<Text text="{appModel>/UserConfig/WRK/Parva}"/>-->
+					<Label text="{i18n>columna_material_descripcion_label}"/>
+					<Text text="{appModel>/ConsultaStock/Datos/MaterialDescripcion}"/>
+					<Label text="{i18n>columna_LibreUtil_label}"/>
+					<Text text="{appModel>/ConsultaStock/Datos/LibreUtilizacion}"/>
+					<Label text="{i18n>columna_Traslado_label}"/>
+					<Text text="{appModel>/ConsultaStock/Datos/EnTraslado}"/>
+					<Label text="{i18n>columna_InspCalidad_label}"/>
+					<Text text="{appModel>/ConsultaStock/Datos/InspCalidad}"/>
+					<Label text="{i18n>columna_Bloqueado_label}"/>
+					<Text text="{appModel>/ConsultaStock/Datos/Bloqueado}"/>
+					<Label text="{i18n>columna_EnTransito_label}" visible="{= ${appModel>/ConsultaStock/Datos/Almacen} === '' }"/>
+					<Text text="{appModel>/ConsultaStock/Datos/EnTransito}" visible="{= ${appModel>/ConsultaStock/Datos/Almacen} === '' }"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject"
+					press="._onLimpiarPantalla($event,'ConsultaStock')"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

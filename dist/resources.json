@@ -1,0 +1,189 @@
+{
+    "resources": [
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "libs/Html5Qrcode.js"
+        },
+        {
+            "name": "test/integration/opaTests.qunit.js"
+        },
+        {
+            "name": "test/integration/arrangements/Startup.js"
+        },
+        {
+            "name": "test/integration/opaTests.qunit.html"
+        },
+        {
+            "name": "test/integration/NavigationJourney.js"
+        },
+        {
+            "name": "test/integration/pages/App.js"
+        },
+        {
+            "name": "test/integration/AllJourneys.js"
+        },
+        {
+            "name": "test/unit/unitTests.qunit.html"
+        },
+        {
+            "name": "test/unit/AllTests.js"
+        },
+        {
+            "name": "test/unit/controller/App.controller.js"
+        },
+        {
+            "name": "test/unit/unitTests.qunit.js"
+        },
+        {
+            "name": "test/testsuite.qunit.html"
+        },
+        {
+            "name": "test/testsuite.qunit.js"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/valuehelps/Material.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Centro.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Entrega.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/AlmacenCentro.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Lote.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/InventarioSinUMP.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/InventarioConUMP.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Ruta.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Almacen.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/Pedido.fragment.xml"
+        },
+        {
+            "name": "view/valuehelps/PuestoExpedicion.fragment.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/fragments/DesembalajeUmp.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreCentrosConPedidoPickingEntregaSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RecepcionTrasladosConHU.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreCentrosConPedidoCreacionEntregaSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes1PasoConHU.fragment.xml"
+        },
+        {
+            "name": "view/fragments/ConsultaLotes.fragment.xml"
+        },
+        {
+            "name": "view/fragments/InventariosSinUmp.fragment.xml"
+        },
+        {
+            "name": "view/fragments/InventariosConUmp.fragment.xml"
+        },
+        {
+            "name": "view/fragments/ConsultaUmp.fragment.xml"
+        },
+        {
+            "name": "view/fragments/ConsultaStock.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RepackingMaterial.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes2PasoSinHUEntrada.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes2PasoSinHUSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes2PasoConHUEntrada.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes2PasoConHUSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreAlmacenes1PasoSinHU.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RepackingUmpPallet.fragment.xml"
+        },
+        {
+            "name": "view/fragments/Home.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RecepcionTrasladosSinHU.fragment.xml"
+        },
+        {
+            "name": "view/fragments/EntregasParaVentas.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreCentrosCreacionEntregaSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/PopupPickeoUMp.fragment.xml"
+        },
+        {
+            "name": "view/fragments/EntregaPedidoVentasPickingEntregaSalida.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TrasladoEntreCentrosPickingEntregaSalida.fragment.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

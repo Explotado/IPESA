@@ -1,0 +1,111 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="ConsultaUmp" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormConsultaUmp2" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4">
+				<f:content>
+					<Label text="{i18n>input_ump_label}" required="true"/>
+					<Input valueHelpOnly="true" submit="onSubmit_UMp_ConsultaUmp"/>
+					<Button icon="sap-icon://camera" tooltip="{i18n>escanear_tooltip}" press="onEscanear_UMp_ConsultaUmp">
+						<layoutData>
+							<f:ColumnElementData cellsSmall="2" cellsLarge="1"/>
+						</layoutData>
+					</Button>
+				</f:content>
+			</f:SimpleForm>
+			<Table items="{appModel>/ConsultaUmp/Datos/ListaUMp}" visible="{appModel>/ConsultaUmp/Datos/Visible}" headerText="Detalle UM">
+				<columns>
+					<Column width="5rem">
+						<Label text="{i18n>columna_ump_label}" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_centro_label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_almacen_label}"/>
+					</Column>
+					<Column width="5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_material_label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_material_descripcion_label}"/>
+					</Column>
+					<Column>
+						<Label text="{i18n>columna_cantidad_um_label}"/>
+					</Column>
+					<Column width="5rem">
+						<Label text="{i18n>columna_lote_label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_fecha_label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label text="{i18n>columna_peso_neto_label}"/>
+					</Column>
+					<Column>
+						<Label text="{i18n>columna_peso_bruto_label}"/>
+					</Column>
+					<Column>
+						<Label text="{i18n>columna_material_embalaje_label}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{appModel>UM}"/>
+							<Text text="{appModel>Centro}"/>
+							<Text text="{appModel>Almacen}"/>
+							<Text text="{appModel>Material}"/>
+							<Text text="{appModel>MaterialDescripcion}"/>
+							<Text text="{appModel>Cantidad} {appModel>UnMed}"/>
+							<Text text="{appModel>Lote}"/>
+							<Text text="{path: 'appModel>Fecha', formatter: '.formatter.formatDate'}"/>
+							<Text text="{appModel>PesoNeto}"/>
+							<Text text="{appModel>PesoBruto}"/>
+							<Text text="{appModel>MaterialEmbalaje}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<f:SimpleForm id="idFormConsultaUmp" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4" visible="{appModel>/ConsultaUmp/Datos/Visible2}">
+				<f:content>
+					<Label text="{i18n>columna_ump_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/UM}"/>
+					<Label text="{i18n>columna_centro_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Centro}"/>
+					<Label text="{i18n>columna_almacen_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Almacen}"/>
+					<Label text="{i18n>columna_material_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Material}"/>
+					<Label text="{i18n>columna_material_descripcion_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/MaterialDescripcion}"/>
+					<Label text="{i18n>columna_documento_label}" visible="false"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Documento}" visible="false"/>
+					<Label text="{i18n>columna_posicion_label}" visible="false"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Posicion}" visible="false"/>
+					<Label text="{i18n>columna_clasePos_label}" visible="false"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/ClasePosicion}" visible="false"/>
+					<Label text="{i18n>columna_cantidad_um_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Cantidad} {appModel>/ConsultaUmp/Datos/UnMed}"/>
+					<Label text="{i18n>columna_lote_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/Lote}"/>
+					<Label text="{i18n>columna_fecha_label}"/>
+					<Text text="{path: 'appModel>/ConsultaUmp/Datos/Fecha', formatter: '.formatter.formatDate'}"/>
+					<Label text="{i18n>columna_peso_neto_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/PesoNeto}"/>
+					<Label text="{i18n>columna_peso_bruto_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/PesoBruto}"/>
+					<Label text="{i18n>columna_material_embalaje_label}"/>
+					<Text text="{appModel>/ConsultaUmp/Datos/MaterialEmbalaje}"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'ConsultaUmp')"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

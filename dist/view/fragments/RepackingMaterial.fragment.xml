@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="RepackingMaterial" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormRepackingMaterial" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4">
+				<f:content>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}" required="true"/>
+					<Input
+						value="{appModel>/RepackingMaterial/Datos/Centro}"
+						valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_RepackingMaterial_Centro"></Input>
+
+					<!--Material-->
+					<Label text="{i18n>input_material_label}" required="true"/>
+					<Input
+						value="{appModel>/RepackingMaterial/Datos/Material}"
+						valueHelpOnly="false" change="onValidaciones_RepackingMaterial" showValueHelp="true" submit="onValidaciones_RepackingMaterial"
+						valueHelpRequest="onValueHelp_RepackingMaterial_Material"></Input>
+					<!--Cantidad parcial-->
+					<Label text="{i18n>input_cantidad_parcial_label}"/>
+					<Input value="{appModel>/RepackingMaterial/Datos/CantidadParcial}" liveChange="onValidaciones_RepackingMaterial" type="Number"></Input>
+					<Text text="{appModel>/RepackingMaterial/Datos/CantidadParcialUM}"/>
+					<!--Cantidad total-->
+					<Label text="{i18n>input_cantidad_total_label}" required="true"/>
+					<Input value="{appModel>/RepackingMaterial/Datos/CantidadTotal}" liveChange="onValidaciones_RepackingMaterial" type="Number"></Input>
+					<Text text="{appModel>/RepackingMaterial/Datos/CantidadTotalUM}"/>
+					<!--Lote-->
+					<Label text="{i18n>input_lote_label}" required="true"/>
+					<Input value="{appModel>/RepackingMaterial/Datos/Lote}" valueHelpOnly="false" showValueHelp="true" valueHelpRequest="onValueHelp_RepackingMaterial_Lote"
+						liveChange="onValidaciones_RepackingMaterial" submit="onValidaciones_RepackingMaterial"/>
+					<!--Material embalaje-->
+					<Label text="{i18n>input_material_embalaje_label}"/>
+					<Input
+						value="{appModel>/RepackingMaterial/Datos/MaterialEmbalaje}"
+						valueHelpOnly="false" change="onValidaciones_RepackingMaterial" showValueHelp="true"
+						valueHelpRequest="onValueHelp_RepackingMaterial_MaterialEmbalaje" submit="onValidaciones_RepackingMaterial"></Input>
+					<!--Almacen destino-->
+					<Label text="{i18n>input_almacen_destino_label}" required="true"/>
+					<Input
+						value="{appModel>/RepackingMaterial/Datos/AlmacenDestino}"
+						valueHelpOnly="false" change="onValidaciones_RepackingMaterial" showValueHelp="true" submit="onValidaciones_RepackingMaterial"
+						valueHelpRequest="onValueHelp_RepackingMaterial_AlmacenDestino"></Input>
+					<!--Embalar automáticamente-->
+					<Label text="{i18n>switch_embalar_auto_label}"/>
+					<Switch state="{appModel>/RepackingMaterial/Datos/EmbalarAuto}" customTextOff="{i18n>switch_opcion_no}" customTextOn="{i18n>switch_opcion_si}"/>	
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'RepackingMaterial')"/>
+				<ToolbarSpacer/>
+				<Button text="Contabilizar" type="Emphasized" press="onAccionPrincipal_RepackingMaterial" enabled="{appModel>/RepackingMaterial/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

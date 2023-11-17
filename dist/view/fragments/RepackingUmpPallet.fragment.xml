@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="RepackingUmpPallet" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormRepackingUmpPallet" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1" emptySpanL="4">
+				<f:content>
+					<Label text=""/>
+					<!--Tipo de repack-->
+					<SegmentedButton selectedKey="{appModel>/RepackingUmpPallet/Datos/TipoRepack}" width="auto">
+						<items>
+							<SegmentedButtonItem text="Nuevo" key="nuevo"/>
+							<SegmentedButtonItem text="Existente" key="existente"/>
+						</items>
+					</SegmentedButton>
+					<!--Material embalaje-->
+					<Label text="{i18n>input_material_embalaje_label}" visible="{= ${appModel>/RepackingUmpPallet/Datos/TipoRepack} === 'nuevo' ? true : false }"/>
+					<Input value="{parts: [ 'appModel>/RepackingUmpPallet/Datos/MaterialEmbalaje', 'appModel&gt;/RepackingUmpPallet/Datos/MaterialEmbajaleDescripcion' ], formatter: '.formatter.keyDescripcion'}" valueHelpOnly="true" change="onValidaciones_RepackingUmpPallet" showValueHelp="true" valueHelpRequest="onValueHelp_RepackingUmpPallet_MaterialEmbalaje" visible="{= ${appModel>/RepackingUmpPallet/Datos/TipoRepack} === 'nuevo' ? true : false }"/>
+					<!--Ump destino-->
+					<Label text="{i18n>input_ump_destino_label}" required="true" visible="{= ${appModel>/RepackingUmpPallet/Datos/TipoRepack} === 'existente' ? true : false }"/>
+					<Input valueHelpOnly="true" submit="onSubmit_UMpDestino_RepackingUmpPallet" value="{appModel>/RepackingUmpPallet/Datos/UmpDestino}" visible="{= ${appModel>/RepackingUmpPallet/Datos/TipoRepack} === 'existente' ? true : false }"/>
+					<Button icon="sap-icon://camera" tooltip="{i18n>escanear_tooltip}" press="onEscanear_UMpDestino_RepackingUmpPallet" visible="{= ${appModel>/RepackingUmpPallet/Datos/TipoRepack} === 'existente' ? true : false }">
+						<layoutData>
+							<f:ColumnElementData cellsSmall="2" cellsLarge="1"/>
+						</layoutData>
+					</Button>
+					<!--Input de UMp-->
+					<Label text="{i18n>input_ump_label}" required="true"/>
+					<Input valueHelpOnly="true" submit="onSubmit_UMp_RepackingUmpPallet"/>
+					<Button icon="sap-icon://camera" tooltip="{i18n>escanear_tooltip}" press="onEscanear_UMp_RepackingUmpPallet">
+						<layoutData>
+							<f:ColumnElementData cellsSmall="2" cellsLarge="1"/>
+						</layoutData>
+					</Button>
+				</f:content>
+			</f:SimpleForm>
+			<!--Lista de UMp ingresadas-->
+			<List headerText="UMp escaneadas" items="{appModel>/RepackingUmpPallet/Datos/ListaUMp}" mode="Delete" delete="onDelete_UMp_RepackingUmpPallet">
+				<items>
+					<StandardListItem title="{appModel>Exidv}" info="{appModel>Maktx}"/>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'RepackingUmpPallet')"/>
+				<ToolbarSpacer/>
+				<Button text="Contabilizar" type="Emphasized" press="onAccionPrincipal_RepackingUmpPallet" enabled="{appModel>/RepackingUmpPallet/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

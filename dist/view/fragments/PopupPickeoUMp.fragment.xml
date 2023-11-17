@@ -1,0 +1,117 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Picking pos. {appModel>Posnr}">
+		<content>
+			<f:SimpleForm 
+				id="idFormPopupPickeo" 
+				editable="true" 
+				layout="ColumnLayout" 
+				singleContainerFullSize="false" 
+				columnsL="1" 
+				columnsM="1"
+				emptySpanL="4">
+				<f:content>
+					<Label design="Bold" text="Total a pickear"/>
+					<Text text="{appModel>Lfimg} {appModel>Meins}"/>
+					
+					<Label design="Bold" text="Pendiente"/>
+					<Text
+						text="{ 
+							parts: [ 
+								{path: 'appModel>CantPickeada'},
+								{path: 'appModel>Lfimg'}
+							], 
+							formatter: '.formatter.cantidadPendiente' } {appModel>Meins}"/>
+					
+					<!-- <ProgressIndicator class="sapUiSmallMarginBottom" 2-->
+					<!--<ProgressIndicator 
+						percentValue="{ parts: [ {path: 'appModel>CantPickeada'},{path: 'appModel>Lfimg'}], formatter: '.formatter.porcentajePickeado' }"
+						displayValue="{ path: 'appModel>CantPickeada', formatter: '.formatter.cantidadPickeada' }" showValue="true"
+						state="{ parts: [ {path: 'appModel>CantPickeada'},{path: 'appModel>Pikmg'}], formatter: '.formatter.colorPorcentajePickeado' }"/>-->
+					
+						<!-- displayValue="{ path: 'appModel>CantPickeada', formatter: '.formatter.cantidadPickeada' }"  -->
+					<ProgressIndicator 
+						percentValue="{ 
+							parts: 
+							[ 
+								{path: 'appModel>CantPickeada'},
+								{path: 'appModel>Lfimg'}
+							], formatter: '.formatter.porcentajePickeado' }"
+						displayValue="{ path: 'appModel>CantPickeada', formatter: '.formatter.cantidadPickeadaDec3' }" 
+						showValue="true"
+						state="{ 
+							parts: 
+							[ 
+								{path: 'appModel>CantPickeada'},
+								{path: 'appModel>Lfimg'}
+							], formatter: '.formatter.colorPorcentajePickeado' }"/>
+					
+					<Label design="Bold" text="Peso Neto"/>
+					<Text visible="{appModel>PesosVisible}"
+						text="{ path: 'appModel>PesoNetoAcum', formatter: '.formatter.cantidadPickeadaDec3' } KG"/>
+						<!-- text="{ path: 'appModel>PesoNetoAcum', formatter: '.formatter.cantidadPickeada' } KG"/> -->
+					
+					<Label design="Bold" text="Peso Bruto"/>
+					<Text visible="{appModel>PesosVisible}"
+						text="{ path: 'appModel>PesoBrutoAcum', formatter: '.formatter.cantidadPickeadaDec3' } KG"/>	
+						<!-- text="{ path: 'appModel>PesoBrutoAcum', formatter: '.formatter.cantidadPickeada' } KG"/>	 -->
+					
+					<!-- <Label design="Bold" text="Peso Bruto"/>
+					<Text
+						text="{ parts: [ {path: 'appModel>CantPickeada'},{path: 'appModel>Lfimg'}], formatter: '.formatter.cantidadPendiente' } {appModel>Meins}"/> --> 
+					
+					<!--Input de UMp-->
+					
+					<Label text="{i18n>input_ump_label}" required="true"/>
+					<Input valueHelpOnly="true" submit="onSubmit_UMp_PopupPickeo"/>
+					
+					<Button icon="sap-icon://camera" tooltip="{i18n>escanear_tooltip}" press="onEscanear_UMp_PopupPickeo">
+						<layoutData>
+							<f:ColumnElementData cellsSmall="2" cellsLarge="1"/>
+						</layoutData>
+					</Button>
+				</f:content>
+			</f:SimpleForm>
+
+			<!--Lista de UMp de la posición-->
+			<List 
+				headerText="UMp disponibles para la posición {appModel>Posnr}"
+				items="{path: 'appModel>ListaUMp', sorter: { path: 'Pickeado', descending: true } }" 
+				mode="None" 
+				growing="true" 
+				growingThreshold="30">
+				<items>
+					<CustomListItem highlight="{ path: 'appModel>Pickeado', formatter: '.formatter.highlightPicking' }">
+						<HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom" justifyContent="SpaceBetween">
+							<ObjectIdentifier 
+								title="{appModel>Exidv}"
+								text="{appModel>Arktx} {= ${appModel>Charg} ? '- Lote' : '' } {appModel>Charg} - {path: 'appModel>Vemng', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 3, minFractionDigits: 3 } } {appModel>Vemeh}"/>
+							
+							<ObjectIdentifier 
+								visible="{appModel>PesosVisible}" 
+								title="Peso Neto"
+								text="{path: 'appModel>Ntgew', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 3, minFractionDigits: 3 } } KG" />
+							
+							<ObjectIdentifier 
+								visible="{appModel>PesosVisible}" 
+								title="Peso Bruto"
+								text="{path: 'appModel>Brgew', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 3, minFractionDigits: 3 } } KG" />
+						
+							<HBox 
+								justifyContent="End" 
+								alignItems="Center">
+								<ObjectStatus 
+									text="{ path: 'appModel>Pickeado', formatter: '.formatter.estadoPicking' }"
+									state="{ path: 'appModel>Pickeado', formatter: '.formatter.colorEstadoPicking' }" 
+									class="sapUiSmallMarginBeginEnd"/>
+								<Button icon="sap-icon://delete" press="borrarUmp_PopupPickeo" visible="{appModel>Pickeado}"></Button>
+							</HBox>
+						</HBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</content>
+		<endButton>
+			<Button text="Cerrar" press="onClose_PopupPickeo"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

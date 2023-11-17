@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="InventariosSinUmp" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormInventariosSinUmp" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1"
+				emptySpanL="4">
+				<f:content>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}" required="true"/>
+					<Input
+						value="{appModel>/InventariosSinUmp/Datos/Centro}"
+						valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_InventariosSinUmp_Centro"></Input>
+
+					<!--Inventario-->
+					<Label text="{i18n>input_doc_inventario_label}" required="true"/>
+					<Input value="{appModel>/InventariosSinUmp/Datos/DocInventario}" valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_InventariosSinUmp_Inventario" submit="onSubmit_InventariosSinUmp_Inventario"/>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}" visible="{= ${appModel>/InventariosSinUmp/Datos/DocInventario} !== '' }"></Label>
+					<Text text="{appModel>/InventariosSinUmp/Datos/Centro}" visible="{= ${appModel>/InventariosSinUmp/Datos/DocInventario} !== '' }"/>
+					<!--Almacen-->
+					<Label text="{i18n>input_almacen_label}" visible="{= ${appModel>/InventariosSinUmp/Datos/DocInventario} !== '' }"></Label>
+					<Text text="{appModel>/InventariosSinUmp/Datos/Almacen}" visible="{= ${appModel>/InventariosSinUmp/Datos/DocInventario} !== '' }"/>
+				</f:content>
+			</f:SimpleForm>
+			<!--Lista de Posiciones del doc. inventario elegido-->
+			<Table items="{appModel>/InventariosSinUmp/Datos/ListaPosiciones}" visible="{= ${appModel>/InventariosSinUmp/Datos/DocInventario} !== '' }"
+				headerText="Posiciones">
+				<columns>
+					<Column>
+						<Text text="Pos"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Centro"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Almacen"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Material"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Denominacion"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Cant./UM"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Lote"/>
+					</Column>
+					<Column>
+						<Text text="Cant.Pick"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier text="{appModel>Zeili}"/>
+							<Text text="{appModel>Werks}"/>
+							<Text text="{appModel>Lgort}"/>
+							<Text text="{appModel>Matnr}"/>
+							<Text text="{appModel>Arktx}"/>
+							<ObjectNumber number="{appModel>Lfimg}" unit="{appModel>Meins}"/>
+							<Text text="{appModel>Charg}"/>
+							<Input type="Number" placeholder="Ing. Cantidad" value="{appModel>Pikmg}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'InventariosSinUmp')"/>
+				<ToolbarSpacer/>
+				<Button text="Contabilizar" type="Emphasized" press="onAccionPrincipal_InventariosSinUmp" enabled="{appModel>/InventariosSinUmp/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

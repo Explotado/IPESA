@@ -1,0 +1,81 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="TrasladoEntreAlmacenes2PasoConHUEntrada" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormTrasladoEntreAlmacenes2PasoConHUEntrada" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1"
+				columnsM="1" emptySpanL="4">
+				<f:content>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}" required="true"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoConHUEntrada/Datos/Centro}"
+						valueHelpOnly="false" change="onValidaciones_TrasladoEntreAlmacenes2PasoConHUEntrada" showValueHelp="true" submit="onValidaciones_TrasladoEntreAlmacenes2PasoConHUEntrada"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoConHUEntrada_Centro"></Input>
+					
+					<!--Almacen destino-->
+					<Label text="{i18n>input_almacen_destino_label}" required="true"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoConHUEntrada/Datos/AlmacenDestino}"
+						valueHelpOnly="false" change="onValidaciones_TrasladoEntreAlmacenes2PasoConHUEntrada" showValueHelp="true" submit="onValidaciones_TrasladoEntreAlmacenes2PasoConHUEntrada"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoConHUEntrada_AlmacenDestino"></Input>
+					<!--Input de UMp-->
+					<Label text="{i18n>input_ump_label}" required="true"/>
+					<Input valueHelpOnly="true" submit="onSubmit_UMp_TrasladoEntreAlmacenes2PasoConHUEntrada"/>
+					<Button icon="sap-icon://camera" tooltip="{i18n>escanear_tooltip}" press="onEscanear_UMp_TrasladoEntreAlmacenes2PasoConHUEntrada">
+						<layoutData>
+							<f:ColumnElementData cellsSmall="2" cellsLarge="1" />
+						</layoutData>
+					</Button>
+				</f:content>
+			</f:SimpleForm>
+			<!--Lista de UMp ingresadas-->
+			<List id="tblSinBalanza" visible="false" headerText="UMp escaneadas" items="{appModel>/TrasladoEntreAlmacenes2PasoConHUEntrada/Datos/ListaUMp}" mode="Delete"
+				delete="onDelete_UMp_TrasladoEntreAlmacenes2PasoConHUEntrada">
+				<items>
+					<StandardListItem title="{appModel>Exidv}" info="{appModel>Maktx}"/>
+				</items>
+			</List>
+			<ScrollContainer vertical="true" height="50%"> 	
+			<Table id="tblConBalanza" visible="false" items="{appModel>/TrasladoEntreAlmacenes2PasoConHUEntrada/Datos/ListaUMp}" growing="true"
+											growingThreshold="10" growingScrollToLoad="true">
+				<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="UMp escaneadas"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Embalaje"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Peso Bruto"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Balanza"/>
+						</Column>
+									
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier class="sapUiTinyMarginTop" text="{appModel>Exidv}"/>
+								<Text  class="sapUiTinyMarginTop" text="{appModel>Vhilm}"/>
+								<Text class="sapUiTinyMarginTop" text="{appModel>Brgew}"/>
+								<Input value="{path:'appModel>PesoBf', type:'sap.ui.model.type.Currency'}" enabled="{= ${appModel>CheckBf} === 'X' }"/>
+							
+								</cells>
+						</ColumnListItem>
+					</items>
+
+			</Table>
+		</ScrollContainer >
+		
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'TrasladoEntreAlmacenes2PasoConHUEntrada')"/>
+				<ToolbarSpacer/>
+				<Button text="Contabilizar" type="Emphasized" press="onAccionPrincipal_TrasladoEntreAlmacenes2PasoConHUEntrada"
+					enabled="{appModel>/TrasladoEntreAlmacenes2PasoConHUEntrada/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

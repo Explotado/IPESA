@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Page id="Home">
+		<FlexBox alignItems="Center" wrap="Wrap" justifyContent="Center" direction="Column" height="100%" width="100%">
+			<Title text="Bienvenido a la app de radiofrecuencia" titleStyle="H1" wrapping="true" textAlign="Center"/>
+			<Button text="Mostrar menú" press="openSideMenu" type="Emphasized"/>
+			<Button text="Probar scanner" press="probarScanner"/>
+		</FlexBox>
+	</Page>
+</core:FragmentDefinition>

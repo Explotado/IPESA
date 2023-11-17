@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Doc. inventario" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose"
+		supportRanges="false" supportMultiselect="false" key="Iblnr" descriptionKey="Lgort" contentWidth="100%">
+		<filterBar>
+			<fb:FilterBar showClearButton="true" advancedMode="true" search="onValueHelpFilter">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Iblnr" label="Doc. inventario" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Iblnr" showSuggestion="false" />
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Lgort" label="Almacén" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Lgort" showSuggestion="false" />
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

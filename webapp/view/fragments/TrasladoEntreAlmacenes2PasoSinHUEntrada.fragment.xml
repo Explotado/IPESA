@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!-- El ID de la Page tiene que coincidir con la key del NavigationListItem del menu! -->
+	<Page id="TrasladoEntreAlmacenes2PasoSinHUEntrada" title="{appModel>/Subtitulo}">
+		<content>
+			<f:SimpleForm id="idFormTrasladoEntreAlmacenes2PasoSinHUEntrada" editable="true" layout="ColumnLayout" singleContainerFullSize="false" columnsL="1" columnsM="1" emptySpanL="4">
+				<f:content>
+					<!--Centro-->
+					<Label text="{i18n>input_centro_label}"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/Centro}"
+						valueHelpOnly="false" showValueHelp="true"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoSinHUEntrada_Centro" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"></Input>
+					
+					<!--Almacen-->
+					<Label text="{i18n>input_almacen_label}" required="true"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/Almacen}"
+						valueHelpOnly="false" change="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada" showValueHelp="true" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoSinHUEntrada_Almacen"></Input>
+					<!--Material-->
+					<Label text="{i18n>input_material_label}" required="true"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/Material}"
+						valueHelpOnly="false" change="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada" showValueHelp="true" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoSinHUEntrada_Material"></Input>
+					<!--Cantidad/UM-->
+					<Label text="{i18n>input_cantidad_um_label}" required="true"/>
+					<Input value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/Cantidad}" type="Number"
+						liveChange="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"></Input>
+					<Text text="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/CantidadUM}"/>
+					<!--Lote-->
+					<Label text="{i18n>input_lote_label}" required="true"/>
+					<Input value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/Lote}" valueHelpOnly="false" showValueHelp="true" valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoSinHUEntrada_Lote"
+						liveChange="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"/>
+					<!--Almacen destino-->
+					<Label text="{i18n>input_almacen_destino_label}" required="true"/>
+					<Input
+						value="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Datos/AlmacenDestino}"
+						valueHelpOnly="false" change="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada" showValueHelp="true" submit="onValidaciones_TrasladoEntreAlmacenes2PasoSinHUEntrada"
+						valueHelpRequest="onValueHelp_TrasladoEntreAlmacenes2PasoSinHUEntrada_AlmacenDestino"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button tooltip="{i18n>boton_limpiar_pantalla}" icon="sap-icon://delete" type="Reject" press="._onLimpiarPantalla($event,'TrasladoEntreAlmacenes2PasoSinHUEntrada')"/>
+				<ToolbarSpacer/>
+				<Button text="Contabilizar" type="Emphasized" press="onAccionPrincipal_TrasladoEntreAlmacenes2PasoSinHUEntrada"
+					enabled="{appModel>/TrasladoEntreAlmacenes2PasoSinHUEntrada/Validado}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

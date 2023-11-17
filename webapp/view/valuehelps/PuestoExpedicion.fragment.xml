@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Materiales" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose"
+		supportRanges="false" supportMultiselect="false" key="Vstel" descriptionKey="Vstel" contentWidth="100%">
+		<filterBar>
+			<fb:FilterBar showClearButton="true" advancedMode="true" search="onValueHelpFilter">
+				<fb:filterGroupItems>
+					<!--<fb:FilterGroupItem groupName="__$INTERNAL$" name="Matnr_Adic" label="Código material" visibleInFilterBar="true">-->
+					<!--	<fb:control>-->
+					<!--		<m:Input name="Matnr_Adic" showSuggestion="true" suggest=".onAditionalMaterialSuggest" />-->
+					<!--	</fb:control>-->
+					<!--</fb:FilterGroupItem>-->
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

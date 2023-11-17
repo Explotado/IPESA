@@ -1,0 +1,103 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ipesa.zradiofrecuenciaV2.controller.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt">
+	<App>
+		<pages>
+			<Page title="Title" showHeader="false">
+				<content>
+					<tnt:ToolPage id="idToolPage">
+						<tnt:header>
+							<tnt:ToolHeader>
+								<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press="onSideNavButtonPress">
+									<layoutData>
+										<OverflowToolbarLayoutData priority="NeverOverflow"/>
+									</layoutData>
+								</Button>
+								<ToolbarSpacer/>
+								<Title text="{appModel>/Titulo}"/>
+								<ToolbarSpacer/>
+								<Button id="idMessagePopoverBtn" icon="{ path: 'messageModel>/maxPrioridad', formatter: '.formatter.iconoBotonMensajes' }"
+									type="{ path: 'messageModel>/maxPrioridad', formatter: '.formatter.tipoBotonMensajes' }" text="{path: 'messageModel>/counter' }"
+									press=".onMessagePopoverPress"/>
+							</tnt:ToolHeader>
+						</tnt:header>
+						<tnt:sideContent >
+							<tnt:SideNavigation itemSelect="onMenuItemSelected">
+								<tnt:NavigationList>
+									<!-- Los items que tienen key abren la pagina llamada igual que la key, el resto al clickear se expande/contrae -->
+									<tnt:NavigationListItem text="Inicio" icon="sap-icon://home" key="Home"/>
+									<tnt:NavigationListItem text="Recepción traslados" icon="sap-icon://cart-3" expanded="false">
+										<tnt:NavigationListItem text="Recepción traslados sin HU" key="RecepcionTrasladosSinHU"/>
+										<tnt:NavigationListItem text="Recepción traslados con HU" key="RecepcionTrasladosConHU"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Trasl. e/ almacenes sin HU" icon="sap-icon://cart" expanded="false">
+										<tnt:NavigationListItem text="Traslados 1 paso sin HU" key="TrasladoEntreAlmacenes1PasoSinHU"/>
+										<tnt:NavigationListItem text="Traslados 2 pasos (salida)" key="TrasladoEntreAlmacenes2PasoSinHUSalida"/>
+										<tnt:NavigationListItem text="Traslados 2 pasos (entrada)" key="TrasladoEntreAlmacenes2PasoSinHUEntrada"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Trasl. e/ almacenes con HU" icon="sap-icon://cart-5" expanded="false">
+										<tnt:NavigationListItem text="Traslados 1 paso con HU" key="TrasladoEntreAlmacenes1PasoConHU"/>
+										<tnt:NavigationListItem text="Traslados 2 pasos (salida)" key="TrasladoEntreAlmacenes2PasoConHUSalida"/>
+										<tnt:NavigationListItem text="Traslados 2 pasos (entrada)" key="TrasladoEntreAlmacenes2PasoConHUEntrada"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Traslados entre centros" icon="sap-icon://shipping-status" expanded="false">
+										<tnt:NavigationListItem text="Creación entrega salida" key="TrasladoEntreCentrosCreacionEntregaSalida"/>
+										<tnt:NavigationListItem text="Picking entrega salida" key="TrasladoEntreCentrosPickingEntregaSalida"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Trasl. e/ centros con ped." icon="sap-icon://shipping-status" expanded="false">
+										<!--<tnt:NavigationListItem text="Creación entrega salida" key="TrasladoEntreCentrosConPedidoCreacionEntregaSalida"/>-->
+										<tnt:NavigationListItem text="Picking entrega salida" key="TrasladoEntreCentrosConPedidoPickingEntregaSalida"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Entrega para ped. ventas" icon="sap-icon://customer-order-entry" expanded="false">
+										<tnt:NavigationListItem text="Picking entrega salida" key="EntregaPedidoVentasPickingEntregaSalida"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Repacking" icon="sap-icon://product" expanded="false">
+										<tnt:NavigationListItem text="Desembalaje UMp" key="DesembalajeUmp"/>
+										<tnt:NavigationListItem text="Repacking material" key="RepackingMaterial"/>
+										<tnt:NavigationListItem text="Repacking UMp (pallet)" key="RepackingUmpPallet"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Toma inventarios" icon="sap-icon://inventory" expanded="false">
+										<tnt:NavigationListItem text="Conteo de inv. sin UMp" key="InventariosSinUmp"/>
+										<tnt:NavigationListItem text="Conteo de inv. con UMp" key="InventariosConUmp"/>
+									</tnt:NavigationListItem>
+									<tnt:NavigationListItem text="Consultas" icon="sap-icon://search" expanded="false">
+										<tnt:NavigationListItem text="Consulta UMp" key="ConsultaUmp"/>
+										<tnt:NavigationListItem text="Consulta Stock" key="ConsultaStock"/>
+										<tnt:NavigationListItem text="Consulta Lotes" key="ConsultaLotes"/>
+									</tnt:NavigationListItem>
+								</tnt:NavigationList>
+							</tnt:SideNavigation>
+						</tnt:sideContent>
+						<tnt:mainContents>
+							<NavContainer id="idPageContainer" initialPage="Home">
+								<pages>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.Home" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.RecepcionTrasladosSinHU" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.RecepcionTrasladosConHU" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes1PasoSinHU" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes2PasoSinHUSalida" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes2PasoSinHUEntrada" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes1PasoConHU" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes2PasoConHUSalida" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreAlmacenes2PasoConHUEntrada" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreCentrosCreacionEntregaSalida" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreCentrosPickingEntregaSalida" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreCentrosConPedidoPickingEntregaSalida" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.EntregaPedidoVentasPickingEntregaSalida" type="XML"/>
+									<!--<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.TrasladoEntreCentrosConPedidoCreacionEntregaSalida" type="XML"/>-->
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.DesembalajeUmp" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.RepackingUmpPallet" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.RepackingMaterial" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.InventariosSinUmp" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.InventariosConUmp" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.ConsultaUmp" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.ConsultaLotes" type="XML"/>
+									<core:Fragment fragmentName="ipesa.zradiofrecuenciaV2.view.fragments.ConsultaStock" type="XML"/>
+								</pages>
+							</NavContainer>
+						</tnt:mainContents>
+					</tnt:ToolPage>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
