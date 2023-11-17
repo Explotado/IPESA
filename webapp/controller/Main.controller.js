@@ -21,6 +21,7 @@ sap.ui.define([
 
 		onInit: function() {
 			console.log("Radiofrec. con cambios 23/08/2023")
+			console.log("cambios 16 de noviembre");
 			// setear el modelo a la vista main
 			this.getView().setModel(this.getOwnerComponent().getModel());
 			this.getView().getModel().setUseBatch(false);
