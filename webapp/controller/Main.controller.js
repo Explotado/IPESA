@@ -5568,7 +5568,7 @@ sap.ui.define([
 			var aFilter = [];
 			aFilter.push(new sap.ui.model.Filter("Vbeln", sap.ui.model.FilterOperator.EQ, entrega));
 			var that = this;
-			this.getView().getModel().read("/DELI_DETAILSet", {
+			this.getView().getModel().read("/DELI_DETAIL_NEWSet", {
 				filters: aFilter,
 				success: function(oData) {
 					var oListaPosiciones = {};
@@ -5647,7 +5647,7 @@ sap.ui.define([
 			if (!oPosicion.UMpCargadas) {
 
 				// cargar las UMp disponibles para la posici�n por material / centro / almac�n
-				this.getView().getModel().read("/OUT_DELI_GM_HUSet", {
+				this.getView().getModel().read("/OUT_DELI_GM_HU_NEWSet", {
 					filters: aFilters,
 					success: function(oData) {
 

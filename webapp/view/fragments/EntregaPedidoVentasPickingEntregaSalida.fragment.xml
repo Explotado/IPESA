@@ -113,6 +113,7 @@
 									press="onVerUHs_UMp_EntregaPedidoVentasPickingEntregaSalida" icon="sap-icon://product" visible="{= ${appModel>Kostk} !== 'C' }"/>
 								<ObjectStatus state="Success" text="Picking completo" visible="{= ${appModel>Kostk} === 'C' }"/>
 							</HBox>
+							<!--Marce cantidad ajustar-->
 							<Button text="Ajustar cantidad" press="onAjustarCantidad_EntregaPedidoVentasPickingEntregaSalida"/>
 						</cells>
 					</ColumnListItem>
